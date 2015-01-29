@@ -1,0 +1,20 @@
+{
+  "name": "assemble-deck",
+  "version": "0.0.0",
+  "description": "Assemble powered reveal.js authoring framework.",
+  "authors": [
+    "Joseph Abrahams"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "reveal.js": "~3.0.0"
+  }
+}
