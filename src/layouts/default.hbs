@@ -6,10 +6,10 @@
 
     <title>{{ title }}</title>
 
-    <link rel="stylesheet" href="/bower_components/reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="/bower_components/reveal.js/css/theme/black.css" id="theme">
+    <link rel="stylesheet" href="{{ assets }}/css/reveal.css">
+    <link rel="stylesheet" href="{{ assets }}/css/theme/black.css" id="theme">
 
-    <link rel="stylesheet" href="/bower_components/reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="{{ assets }}/lib/css/zenburn.css">
   </head>
 
   <body>
@@ -26,11 +26,10 @@
       </div>
     </div>
 
-    <script src="/bower_components/reveal.js/lib/js/head.min.js"></script>
-    <script src="/bower_components/reveal.js/js/reveal.js"></script>
+    <script src="{{ assets }}/lib/js/head.min.js"></script>
+    <script src="{{ assets }}/js/reveal.js"></script>
 
     <script>
-
       Reveal.initialize({
         controls: true,
         progress: true,
@@ -40,14 +39,37 @@
         // Optional libraries used to extend on reveal.js
         // Full list of configuration options available at:
         // https://github.com/hakimel/reveal.js#configuration
-        dependencies: [
-          { src: '/bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: '/bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: '/bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: '/bower_components/reveal.js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: 'plugin/zoom-js/zoom.js', async: true },
-          { src: '/bower_components/reveal.js/plugin/notes/notes.js', async: true }
-        ]
+        dependencies: [{
+          src: '{{ assets }}/lib/js/classList.js',
+          condition: function() {
+            return !document.body.classList;
+          }
+        },{
+          src: '{{ assets }}/plugin/markdown/marked.js',
+          condition: function() {
+            return !!document.querySelector( '[data-markdown]' );
+          }
+        },{
+          src: '{{ assets }}/plugin/markdown/markdown.js',
+          condition: function() {
+            return !!document.querySelector( '[data-markdown]' );
+          }
+        },{
+          src: '{{ assets }}/plugin/highlight/highlight.js',
+          async: true,
+          condition: function() {
+            return !!document.querySelector( 'pre code' );
+          },
+          callback: function() {
+            hljs.initHighlightingOnLoad();
+          }
+        },{
+          src: '{{ assets }}/plugin/zoom-js/zoom.js',
+          async: true
+        },{
+          src: '{{ assets }}/plugin/notes/notes.js',
+          async: true
+        }]
       });
     </script>
 
