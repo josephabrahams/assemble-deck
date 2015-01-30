@@ -23,7 +23,17 @@ module.exports = function(grunt) {
         dest: 'dist/'
       }
     },
-    clean: ['dist/'],
+    clean: {
+      dist: {
+        src: ['dist/']
+      },
+      images: {
+        src: ['dist/assets/images/']
+      },
+      slides: {
+        src: ['dist/**/*.html']
+      }
+    },
     copy: {
       fonts: {
         files: [
@@ -65,9 +75,9 @@ module.exports = function(grunt) {
         },
         files: [
           { expand: true,
-            cwd: 'src/',
+            cwd: 'src/images/',
             src: ['**/*.gif','**/*.jpeg','**/*.jpg','**/*.ico','**/*.png','!bower_components/**'],
-            dest: 'dist/assets/'
+            dest: 'dist/assets/images/'
           }
         ]
       }
@@ -88,7 +98,7 @@ module.exports = function(grunt) {
       },
       sources: {
         files: 'src/**',
-        tasks: ['build'],
+        tasks: ['clean:images','clean:slides','imagemin','assemble'],
         options: {
           debounceDelay: 250,
         },
@@ -113,7 +123,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-zip');
 
   // Custom tasks
-  grunt.registerTask('build',   ['clean','copy','cssmin','imagemin','uglify','assemble']);
+  grunt.registerTask('build',   ['clean:dist','copy','cssmin','uglify','imagemin','assemble']);
   grunt.registerTask('package', ['build','zip']);
   grunt.registerTask('serve',   ['build','connect','watch']);
 

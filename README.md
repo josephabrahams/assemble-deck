@@ -21,9 +21,9 @@ Place slides as markdown files into `src/slides`:
 - Use two blank lines to create a new vertical slide.
 - Use three blank lines to create a new horizontal slide.
 
-Place images into `src/images`:
+Place assets into `src/assets`:
 
-- Reference with `{{ assets }}/images/example.png`.
+- Reference with `{{ assets }}/images/filename`.
 
 See [example](https://raw.githubusercontent.com/josephabrahams/assemble-deck/master/src/slides/example.md).
 
