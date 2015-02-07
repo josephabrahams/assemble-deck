@@ -36,13 +36,12 @@ module.exports = function(grunt) {
     },
     copy: {
       fonts: {
-        files: [
-          { expand: true,
-            cwd: 'src/bower_components/reveal.js/',
-            src: ['**/*.eot,**/*.ttf,**/*.woff,**/*.woff2'],
-            dest: 'dist/assets/'
-          }
-        ]
+        files: [{
+          expand: true,
+          cwd: 'src/bower_components/reveal.js/',
+          src: ['**/*.eot,**/*.ttf,**/*.woff,**/*.woff2'],
+          dest: 'dist/assets/'
+        }]
       }
     },
     connect: {
@@ -61,7 +60,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'src/bower_components/reveal.js/',
-          src: ['**/*.css'],
+          src: ['**/*.css','!node_modules/**'],
           dest: 'dist/assets/'
         }]
       }
@@ -69,26 +68,25 @@ module.exports = function(grunt) {
     imagemin: {
       images: {
         options: {
-            optimizationLevel: 3,
-            progressive: true,
-            interlaced: true
+          optimizationLevel: 3,
+          progressive: true,
+          interlaced: true
         },
-        files: [
-          { expand: true,
-            cwd: 'src/images/',
-            src: ['**/*.gif','**/*.jpeg','**/*.jpg','**/*.ico','**/*.png','!bower_components/**'],
-            dest: 'dist/assets/images/'
-          }
-        ]
+        files: [{
+          expand: true,
+          cwd: 'src/images/',
+          src: ['**/*.gif','**/*.jpeg','**/*.jpg','**/*.ico','**/*.png','!bower_components/**'],
+          dest: 'dist/assets/images/'
+        }]
       }
     },
     uglify: {
       js: {
         files: [{
-            expand: true,
-            cwd: 'src/bower_components/reveal.js/',
-            src: ['**/*.js','!Gruntfile.js'],
-            dest: 'dist/assets/'
+          expand: true,
+          cwd: 'src/bower_components/reveal.js/',
+          src: ['**/*.js','!node_modules/**','!Gruntfile.js'],
+          dest: 'dist/assets/'
         }]
       }
     },
@@ -97,7 +95,7 @@ module.exports = function(grunt) {
         livereload: true
       },
       sources: {
-        files: 'src/**',
+        files: ['src/**','!src/bower_components/**'],
         tasks: ['clean:images','clean:slides','imagemin','assemble'],
         options: {
           debounceDelay: 250,
